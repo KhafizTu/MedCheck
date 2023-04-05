@@ -1,40 +1,15 @@
 package dao;
 
 import classes.Hospital;
-import service.HospitalService;
 
 import java.util.List;
 import java.util.Map;
 
-public class HospitalDao implements HospitalService {
-
-    @Override
-    public String addHospital(Hospital hospital) {
-        return null;
-    }
-
-    @Override
-    public Hospital findHospitalById(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<Hospital> getAllHospital() {
-        return null;
-    }
-
-    @Override
-    public List<Patient> getAllPatientFromHospital(Long id) {
-        return null;
-    }
-
-    @Override
-    public String deleteHospitalById(Long id) {
-        return null;
-    }
-
-    @Override
-    public Map<String, Hospital> getAllHospitalByAddress(String address) {
-        return null;
-    }
+public interface HospitalDao {
+    String addHospital(Hospital hospital);
+    Hospital findHospitalById(Long id);
+    List<Hospital> getAllHospital();
+    List<Patient> getAllPatientFromHospital(Long id);
+    String deleteHospitalById(Long id);
+    Map<String, Hospital> getAllHospitalByAddress(String address);
 }
