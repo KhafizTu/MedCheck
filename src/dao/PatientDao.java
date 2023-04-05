@@ -11,6 +11,6 @@ public interface PatientDao {
     String updatePatientById(Long id, Patient patientsNewInfo);
     void removePatientById(Long id);
     Patient getPatientById(Long id);
-    Map<Integer, Patient> getPatientByAge();
+    Map<Integer, Patient> getPatientByAge(int age);
     List<Patient> sortPatientsByAge(String ascOrDesc);
 }
