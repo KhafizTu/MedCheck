@@ -1,0 +1,96 @@
+Index: src/classes/Hospital.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package classes;\r\n\r\npublic class Hospital {\r\n    private Long id;\r\n    private String hospitalName;\r\n    private String address;\r\n    private List<Department> departments;\r\n    private List<Doctor> doctors;\r\n    private List<Patient> patients;\r\n\r\n    public Hospital(Long id, String hospitalName, String address, List<Department> departments, List<Doctor> doctors, List<Patient> patients) {\r\n        this.id = id;\r\n        this.hospitalName = hospitalName;\r\n        this.address = address;\r\n        this.departments = departments;\r\n        this.doctors = doctors;\r\n        this.patients = patients;\r\n    }\r\n\r\n    public Long getId() {\r\n        return id;\r\n    }\r\n\r\n    public void setId(Long id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public String getHospitalName() {\r\n        return hospitalName;\r\n    }\r\n\r\n    public void setHospitalName(String hospitalName) {\r\n        this.hospitalName = hospitalName;\r\n    }\r\n\r\n    public String getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public void setAddress(String address) {\r\n        this.address = address;\r\n    }\r\n\r\n    public List<Department> getDepartments() {\r\n        return departments;\r\n    }\r\n\r\n    public void setDepartments(List<Department> departments) {\r\n        this.departments = departments;\r\n    }\r\n\r\n    public List<Doctor> getDoctors() {\r\n        return doctors;\r\n    }\r\n\r\n    public void setDoctors(List<Doctor> doctors) {\r\n        this.doctors = doctors;\r\n    }\r\n\r\n    public List<Patient> getPatients() {\r\n        return patients;\r\n    }\r\n\r\n    public void setPatients(List<Patient> patients) {\r\n        this.patients = patients;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Hospital{\" +\r\n                \"id=\" + id +\r\n                \", hospitalName='\" + hospitalName + '\\'' +\r\n                \", address='\" + address + '\\'' +\r\n                \", departments=\" + departments +\r\n                \", doctors=\" + doctors +\r\n                \", patients=\" + patients +\r\n                '}';\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/classes/Hospital.java b/src/classes/Hospital.java
+--- a/src/classes/Hospital.java	
++++ b/src/classes/Hospital.java	
+@@ -1,5 +1,7 @@
+ package classes;
+ 
++import java.util.List;
++
+ public class Hospital {
+     private Long id;
+     private String hospitalName;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"642a4e02-3a37-4d57-af2f-ec260714c2ce\" name=\"Changes\" comment=\"creat package\">\r\n\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Nzp3Uw8PsSoiHFWvg2pxA9Rprs\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"642a4e02-3a37-4d57-af2f-ec260714c2ce\" name=\"Changes\" comment=\"\" />\r\n      <created>1680676566936</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1680676566936</updated>\r\n      <workItem from=\"1680676568243\" duration=\"645000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"creat package\">\r\n      <created>1680676866760</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1680676866760</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"creat package\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"creat package\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,8 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="642a4e02-3a37-4d57-af2f-ec260714c2ce" name="Changes" comment="creat package">
+-
++    <list default="true" id="642a4e02-3a37-4d57-af2f-ec260714c2ce" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/classes/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Department.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/classes/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Hospital.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,13 +24,10 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-
++        <entry key="$PROJECT_DIR$" value="feature/DoctorService" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="MarkdownSettingsMigration">
+-    <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2Nzp3Uw8PsSoiHFWvg2pxA9Rprs" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -36,7 +35,13 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+@@ -47,23 +52,7 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1680676566936</updated>
+-      <workItem from="1680676568243" duration="645000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="creat package">
+-      <created>1680676866760</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1680676866760</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="creat package" />
+-    <option name="LAST_COMMIT_MESSAGE" value="creat package" />
+-  </component>
+ </project>
+\ No newline at end of file
