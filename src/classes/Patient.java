@@ -16,6 +16,7 @@ public class Patient {
         this.age = age;
         this.gender = gender;
     }
+    public Patient(){}
 
     public Long getId() {
         return id;
