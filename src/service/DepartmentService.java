@@ -1,28 +1,12 @@
 package service;
 
 import classes.Department;
-import dao.DepartmentDao;
 
 import java.util.List;
 
-public class DepartmentService implements DepartmentDao {
-    @Override
-    public List<Department> getAllDepartmentByHospital(Long id) {
-        return null;
-    }
-
-    @Override
-    public Department findDepartmentByName(String name) {
-        return null;
-    }
-
-    @Override
-    public void deleteDepartmentById(Long id) {
-
-    }
-
-    @Override
-    public String updateDepartmentById(Long id, Department department) {
-        return null;
-    }
+public interface DepartmentService {
+    List<Department> getAllDepartmentByHospital(Long id);
+    Department findDepartmentByName(String name);
+    void deleteDepartmentById(Long id);
+    String updateDepartmentById(Long id, Department department);
 }

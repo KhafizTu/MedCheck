@@ -1,7 +1,6 @@
 package dao;
 
 import classes.Doctor;
-import service.DoctorService;
 
 import java.util.List;
 
