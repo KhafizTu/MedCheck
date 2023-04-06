@@ -11,6 +11,7 @@ import database.DataBase;
 import service.DoctorService;
 import service.impl.DepartmentServiceImpl;
 import service.impl.DoctorServiceImpl;
+import service.impl.HospitalServiceImpl;
 import service.impl.PatientServiceImpl;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class Main {
         DoctorServiceImpl doctorService=new DoctorServiceImpl();
         DepartmentServiceImpl departmentService = new DepartmentServiceImpl();
         PatientServiceImpl patientService = new PatientServiceImpl();
+        HospitalServiceImpl hospitalService = new HospitalServiceImpl();
 
         Doctor doctor1 = new Doctor(5l, "Max", "Maximov",  Gender.MALE,5);
         Doctor doctor2 = new Doctor(6l, "Igor", "Nekrasov",   Gender.FEMALE,7);
@@ -57,5 +59,15 @@ public class Main {
         List<Department>departments = new ArrayList<>();
         departments.add(department1);
         departments.add(department2);
+
+
+        Hospital hospital1 = new Hospital(10L,"Vedanta","Bishkek",departments,doctors2,patients1);
+        Hospital hospital2 = new Hospital(20L,"EndoMed+","Kara_Kol",departments,doctors2,patients2);
+        Hospital hospital3 = new Hospital(30L,"Ал-Хаким","Osh",departments,doctors2,patients3);
+
+
+
+
+
     }
 }
