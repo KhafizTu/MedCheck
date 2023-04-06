@@ -3,6 +3,7 @@ package database;
 import classes.Doctor;
 import classes.Hospital;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataBase {
