@@ -10,6 +10,9 @@ public class Hospital {
     private List<Doctor> doctors;
     private List<Patient> patients;
 
+    public Hospital() {
+    }
+
     public Hospital(Long id, String hospitalName, String address, List<Department> departments, List<Doctor> doctors, List<Patient> patients) {
         this.id = id;
         this.hospitalName = hospitalName;
@@ -69,13 +72,12 @@ public class Hospital {
 
     @Override
     public String toString() {
-        return "Hospital{" +
+        return "Hospital: " +
                 "id=" + id +
                 ", hospitalName='" + hospitalName + '\'' +
                 ", address='" + address + '\'' +
                 ", departments=" + departments +
                 ", doctors=" + doctors +
-                ", patients=" + patients +
-                '}';
+                ", patients=" + patients  + "\n";
     }
 }

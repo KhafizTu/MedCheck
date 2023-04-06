@@ -2,39 +2,42 @@ package service.impl;
 
 import classes.Hospital;
 import classes.Patient;
+import dao.impl.HospitalDaoImpl;
 import service.HospitalService;
 
 import java.util.List;
 import java.util.Map;
 
 public class HospitalServiceImpl implements HospitalService {
+
+    HospitalDaoImpl hospitalDao = new HospitalDaoImpl();
     @Override
     public String addHospital(Hospital hospital) {
-        return null;
+        return hospitalDao.addHospital(hospital);
     }
 
     @Override
     public Hospital findHospitalById(Long id) {
-        return null;
+        return hospitalDao.findHospitalById(id);
     }
 
     @Override
     public List<Hospital> getAllHospital() {
-        return null;
+        return hospitalDao.getAllHospital();
     }
 
     @Override
     public List<Patient> getAllPatientFromHospital(Long id) {
-        return null;
+        return hospitalDao.getAllPatientFromHospital(id);
     }
 
     @Override
     public String deleteHospitalById(Long id) {
-        return null;
+        return hospitalDao.deleteHospitalById(id);
     }
 
     @Override
     public Map<String, Hospital> getAllHospitalByAddress(String address) {
-        return null;
+        return hospitalDao.getAllHospitalByAddress(address);
     }
 }
