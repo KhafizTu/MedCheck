@@ -56,4 +56,15 @@ public class Doctor {
     public void setExperienceYear(int experienceYear) {
         this.experienceYear = experienceYear;
     }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", gender=" + gender +
+                ", experienceYear=" + experienceYear +
+                '}';
+    }
 }

@@ -1,0 +1,16 @@
+Index: src/database/DataBase.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package database;\r\n\r\npublic class DataBase {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/database/DataBase.java b/src/database/DataBase.java
+--- a/src/database/DataBase.java	(revision bc00c377ba5a1b6a7be9c1465b7ecc6d5361e461)
++++ b/src/database/DataBase.java	(date 1680681395642)
+@@ -1,4 +1,5 @@
+ package database;
+ 
+ public class DataBase {
++
+ }
