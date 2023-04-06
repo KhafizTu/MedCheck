@@ -4,6 +4,7 @@ import classes.Department;
 import classes.Doctor;
 import classes.Hospital;
 import dao.DoctorDao;
+import dao.exception.MyException;
 import database.DataBase;
 
 import java.util.ArrayList;
@@ -12,29 +13,47 @@ import java.util.NoSuchElementException;
 
 public class DoctorDaoImpl implements DoctorDao {
 
-    DataBase dataBase = new DataBase(new  ArrayList<>());
+    DataBase dataBase = new DataBase();
 
     @Override
     public String addDoctorToHospital(Long id, Doctor doctor) {
-        Hospital hospital = dataBase.getHospitals().stream()
-                .filter(h -> h.getId().equals(id))
-                .findFirst()
-                .orElse(null);
-        if (hospital == null) {
-            return "Не найден такой госпиталь";
+        boolean is=true;
+        for (Hospital h : dataBase.getHospitals()) {
+            if (h.getId() == id) {
+                is=true;
+                dataBase.getDoctors().add(doctor);
+                return "Добавлен!";
+            }else {
+                is=false;
+            }
         }
-        hospital.getDoctors().add(doctor);
-        return "Добавлен";
+        try{
+            if(!is){
+                throw new MyException("Не нашел");
+            }
+        }catch (MyException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
 
     @Override
     public Doctor findDoctorById(Long id) {
-        for (Hospital d : dataBase.getHospitals()) {
-            for (Doctor doctor : d.getDoctors()) {
-                if (doctor.getId().equals(id)) {
-
+        boolean is = true;
+        for (Doctor d : dataBase.getDoctors()) {
+            if (d.getId() == id) {
+                is = true;
+                return d;
+            } else {
+                is = false;
+            }
+            try {
+                if (!is) {
+                    throw new MyException("не нашел");
                 }
+            } catch (MyException e) {
+                System.out.println(e.getMessage());
             }
         }
         return null;
@@ -43,28 +62,46 @@ public class DoctorDaoImpl implements DoctorDao {
 
     @Override
     public String updateDoctor(Long id, Doctor doctor) {
-        for (Hospital f : dataBase.getHospitals()) {
-            for (Doctor doctors : f.getDoctors()) {
-                if (doctors.getId().equals(id)) {
-                    doctors.setFirstname(doctor.getFirstname());
-                    doctors.setLastname(doctor.getLastname());
-                    doctors.setGender(doctor.getGender());
-                    doctors.setExperienceYear(doctor.getExperienceYear());
+        boolean is = true;
+        for (Doctor d : dataBase.getDoctors()) {
+            if (d.getId() == id) {
+                is = true;
+                d.setFirstname(doctor.getFirstname());
+                d.setLastname(doctor.getLastname());
+                d.setExperienceYear(doctor.getExperienceYear());
+                d.setGender(doctor.getGender());
+                return "successfully update";
+            } else {
+                is = false;
+            }
+            try {
+                if (!is) {
+                    throw new MyException("Not found");
                 }
-
-
+            } catch (MyException e) {
+                System.out.println(e.getMessage());
             }
         }
-        return  "Обновлено";
+        return null;
     }
 
     @Override
     public void deleteDoctorById(Long id) {
-        for (Hospital d:dataBase.getHospitals()){
-            for (Doctor s:d.getDoctors()){
-                if (s.getId().equals(id)){
-                    d.getDoctors().remove(s);
+        boolean is = true;
+        for (Doctor d : dataBase.getDoctors()) {
+            if (d.getId() == id) {
+                is = true;
+                dataBase.getDoctors().remove(d);
+                System.out.println("Удален");
+            } else {
+                is = false;
+            }
+            try {
+                if (!is) {
+                    throw new MyException("Не нашел");
                 }
+            } catch (MyException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -88,7 +125,7 @@ public class DoctorDaoImpl implements DoctorDao {
                 }
             }
         }
-        return "Assigned!";    }
+        return "Все норм!";    }
 
     @Override
     public List<Doctor> getAllDoctorsByHospitalId(Long id) {
