@@ -1,7 +1,9 @@
 package database;
 
+import classes.Department;
 import classes.Doctor;
 import classes.Hospital;
+import classes.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,25 @@ public class DataBase {
     private List<Hospital> hospitals;
     private List<Doctor> doctors;
 
+    private List<Patient> patients;
 
+    private List<Department> departments;
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
 
     public List<Doctor> getDoctors() {
         return doctors;

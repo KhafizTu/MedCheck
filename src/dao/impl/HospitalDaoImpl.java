@@ -9,18 +9,25 @@ import java.util.*;
 
 public class HospitalDaoImpl implements HospitalDao {
 
-    DataBase dataBase = new DataBase(new ArrayList<>());
+    DataBase dataBase = new DataBase();
 
     @Override
     public String addHospital(Hospital hospital) {
-        try {
+        List<Hospital>hospitals = dataBase.getHospitals();
+        if (hospitals == null){
+            hospitals = new ArrayList<>();
             dataBase.getHospitals().add(hospital);
-            System.out.println("Hospital added successfully !");
-            return "Hospital added successfully !";
-        } catch (ArithmeticException e) {
-            System.out.println("an error has occurred !");
         }
-        return null;
+        hospitals.add(hospital);
+        return "Successfully added";
+//        try {
+//            dataBase.getHospitals().add(hospital);
+//            System.out.println("Hospital added successfully !");
+//            return "Hospital added successfully !";
+//        } catch (ArithmeticException e) {
+//            System.out.println("an error has occurred !");
+//        }
+//        return null;
     }
 
     @Override

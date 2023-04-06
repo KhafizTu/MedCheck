@@ -8,7 +8,7 @@ import database.DataBase;
 import java.util.*;
 
 public class PatientDaoImpl implements PatientDao {
-    private DataBase dataBase;
+    DataBase dataBase = new DataBase();
 
     @Override
     public String addPatientToHospital(Long id, Patient patient) {
