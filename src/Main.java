@@ -9,7 +9,9 @@ import enums.Gender;
 import dao.impl.DoctorDaoImpl;
 import database.DataBase;
 import service.DoctorService;
+import service.impl.DepartmentServiceImpl;
 import service.impl.DoctorServiceImpl;
+import service.impl.PatientServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,8 @@ public class Main {
     public static void main(String[] args) {
         DataBase database = new DataBase();
         DoctorServiceImpl doctorService=new DoctorServiceImpl();
+        DepartmentServiceImpl departmentService = new DepartmentServiceImpl();
+        PatientServiceImpl patientService = new PatientServiceImpl();
 
         Doctor doctor1 = new Doctor(5l, "Max", "Maximov",  Gender.MALE,5);
         Doctor doctor2 = new Doctor(6l, "Igor", "Nekrasov",   Gender.FEMALE,7);
@@ -27,6 +31,11 @@ public class Main {
         doctors.add(doctor2);
         doctors.add(doctor3);
 
+        Doctor doctor4 = new Doctor(1L, "Asan","Akylov",Gender.MALE, 4);
+        Doctor doctor5 = new Doctor(2L, "Kubanych", "Avazov",Gender.MALE,5);
+        List<Doctor> doctors2 = new ArrayList<>();
+        doctors2.add(doctor4);
+        doctors2.add(doctor5);
 
         Patient patient1 = new Patient(1L, "Khafiz", "Turusbek uulu", 19, Gender.MALE);
         Patient patient2 = new Patient(2L, "Bekjan", "Jakanov", 18, Gender.MALE);
@@ -43,6 +52,10 @@ public class Main {
         Patient patient9 = new Patient(9L, "Baiaman", "Imanalyev", 16, Gender.MALE);
         List<Patient> patients3 = List.of(patient7, patient8, patient9);
 
-
+        Department department1 = new Department(1L, "Neurology",doctors);
+        Department department2 = new Department(2L, "Cardeology",doctors2);
+        List<Department>departments = new ArrayList<>();
+        departments.add(department1);
+        departments.add(department2);
     }
 }
