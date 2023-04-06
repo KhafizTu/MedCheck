@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="642a4e02-3a37-4d57-af2f-ec260714c2ce" name="Changes" comment="creat package">
-
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +22,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-
-      </map>
+      <map />
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -36,34 +35,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
-  }
-}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="642a4e02-3a37-4d57-af2f-ec260714c2ce" name="Changes" comment="" />
-      <created>1680676566936</created>
+      <changelist id="4d15a144-9cff-417e-9ff4-c44f1cb4475b" name="Changes" comment="" />
+      <created>1680791553233</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1680676566936</updated>
-      <workItem from="1680676568243" duration="645000" />
+      <updated>1680791553233</updated>
+      <workItem from="1680791554712" duration="2125000" />
     </task>
-    <task id="LOCAL-00001" summary="creat package">
-      <created>1680676866760</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1680676866760</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="creat package" />
-    <option name="LAST_COMMIT_MESSAGE" value="creat package" />
   </component>
 </project>
