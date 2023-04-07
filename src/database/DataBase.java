@@ -16,6 +16,8 @@ public class DataBase {
 
     private List<Department> departments;
 
+
+
     public List<Patient> getPatients() {
         return patients;
     }
@@ -47,6 +49,25 @@ public class DataBase {
     public void setHospitals(List<Hospital> hospitals) {
         this.hospitals = hospitals;
     }
+
+
+    public DataBase(List<Hospital> hospitals) {
+        this.hospitals = hospitals;
+    }
+    public DataBase(List<Doctor>doctors,int number){
+        this.doctors = doctors;
+
+    }
+
+    public DataBase(int num,List<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public DataBase(List<Department> departments,String s) {
+        this.departments = departments;
+    }
+
+
 
     @Override
     public String toString() {
