@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class DepartmentDaoImpl implements DepartmentDao {
-    DataBase dataBase = new DataBase();
+    DataBase dataBase = new DataBase( new ArrayList<>());
 
     @Override
     public String addDepartmentToHospital(Long id, Department department) {

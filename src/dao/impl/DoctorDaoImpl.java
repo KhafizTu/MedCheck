@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 
 public class DoctorDaoImpl implements DoctorDao {
 
-    DataBase dataBase = new DataBase();
+    DataBase dataBase = new DataBase(new ArrayList<>());
 
     @Override
     public String addDoctorToHospital(Long id, Doctor doctor) {

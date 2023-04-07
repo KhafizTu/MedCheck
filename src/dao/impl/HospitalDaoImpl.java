@@ -9,17 +9,26 @@ import java.util.*;
 
 public class HospitalDaoImpl implements HospitalDao {
 
-    DataBase dataBase = new DataBase();
+    DataBase dataBase = new DataBase(new ArrayList<>());
 
     @Override
     public String addHospital(Hospital hospital) {
+
         List<Hospital>hospitals = dataBase.getHospitals();
         if (hospitals == null){
             hospitals = new ArrayList<>();
-            dataBase.getHospitals().add(hospital);
+            dataBase.setHospitals(hospitals);
         }
         hospitals.add(hospital);
+        System.out.println("Successfully added");
         return "Successfully added";
+//        List<Hospital>hospitals = dataBase.getHospitals();
+//        if (hospitals == null){
+//            hospitals = new ArrayList<>();
+//            dataBase.getHospitals().add(hospital);
+//        }
+//        hospitals.add(hospital);
+        //return "Successfully added";
 //        try {
 //            dataBase.getHospitals().add(hospital);
 //            System.out.println("Hospital added successfully !");
@@ -85,6 +94,7 @@ public class HospitalDaoImpl implements HospitalDao {
                     map.put(h.getAddress(), h);
 
                     System.out.println("Address: " + h.getAddress() + "\n" + h);
+                    //System.out.println(map);
                     return map;
                 }
             }

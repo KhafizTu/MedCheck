@@ -17,22 +17,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception{
-        DoctorServiceImpl doctorService=new DoctorServiceImpl();
+    public static void main(String[] args) throws Exception {
+        DoctorServiceImpl doctorService = new DoctorServiceImpl();
         DepartmentServiceImpl departmentService = new DepartmentServiceImpl();
         PatientServiceImpl patientService = new PatientServiceImpl();
         HospitalServiceImpl hospitalService = new HospitalServiceImpl();
 
-        Doctor doctor1 = new Doctor(5L, "Max", "Maximov",  Gender.MALE,5);
-        Doctor doctor2 = new Doctor(6L, "Igor", "Nekrasov",   Gender.FEMALE,7);
-        Doctor doctor3 = new Doctor(7L, "Masha", "Vasilevna",  Gender.FEMALE,3);
+        Doctor doctor1 = new Doctor(5L, "Max", "Maximov", Gender.MALE, 5);
+        Doctor doctor2 = new Doctor(6L, "Igor", "Nekrasov", Gender.FEMALE, 7);
+        Doctor doctor3 = new Doctor(7L, "Masha", "Vasilevna", Gender.FEMALE, 3);
         List<Doctor> doctors = new ArrayList<>();
         doctors.add(doctor1);
         doctors.add(doctor2);
         doctors.add(doctor3);
 
-        Doctor doctor4 = new Doctor(1L, "Asan","Akylov",Gender.MALE, 4);
-        Doctor doctor5 = new Doctor(2L, "Kubanych", "Avazov",Gender.MALE,5);
+        Doctor doctor4 = new Doctor(1L, "Asan", "Akylov", Gender.MALE, 4);
+        Doctor doctor5 = new Doctor(2L, "Kubanych", "Avazov", Gender.MALE, 5);
         List<Doctor> doctors2 = new ArrayList<>();
         doctors2.add(doctor4);
         doctors2.add(doctor5);
@@ -52,247 +52,207 @@ public class Main {
         Patient patient9 = new Patient(9L, "Baiaman", "Imanalyev", 16, Gender.MALE);
         List<Patient> patients3 = List.of(patient7, patient8, patient9);
 
-        Department department1 = new Department(1L, "Neurology",doctors);
-        Department department2 = new Department(2L, "Cardeology",doctors2);
-        List<Department>departments = new ArrayList<>();
+        Department department1 = new Department(1L, "Neurology", doctors);
+        Department department2 = new Department(2L, "Cardeology", doctors2);
+        List<Department> departments = new ArrayList<>();
         departments.add(department1);
         departments.add(department2);
 
 
-        Hospital hospital1 = new Hospital(10L,"Vedanta","Bishkek",departments,doctors2,patients1);
-        Hospital hospital2 = new Hospital(20L,"EndoMed+","Kara_Kol",departments,doctors2,patients2);
-        Hospital hospital3 = new Hospital(30L,"Ал-Хаким","Osh",departments,doctors2,patients3);
+        Hospital hospital1 = new Hospital(10L, "Vedanta", "Bishkek", departments, doctors2, patients1);
+        Hospital hospital2 = new Hospital(20L, "EndoMed+", "Kara_Kol", departments, doctors2, patients2);
+        Hospital hospital3 = new Hospital(30L, "Ал-Хаким", "Osh", departments, doctors2, patients3);
 
-
-
+        Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("""
-            Welcome !
-            1 - Hospital commands
-            2 - Patient commands
-            3 - Department commands
-            4 - Doctor commands""");
-            int i = new Scanner(System.in).nextInt();
-            switch (i) {
-                case 1 -> {
-                    hospitalCommands();
-                    int h = new Scanner(System.in).nextInt();
-                    switch (h) {
-                        case 1 -> {
-                            System.out.println(hospitalService.addHospital(hospital1));
-                            System.out.println(hospitalService.addHospital(hospital2));
-                            System.out.println(hospitalService.addHospital(hospital3));
+        System.out.println("~~~~~Выберите команду~~~~~");
+        System.out.println("""
+                 1 - Hospital commands
+                 2 - Patient commands
+                 3 - Department commands
+                 4 - Doctor commands""\");
+                """);
+
+            int scan = scanner.nextInt();
+            switch (scan) {
+
+                case 1:
+                    while (true) {
+                        hospitalCommands();
+                        switch (scanner.nextInt()) {
+
+                            case 1:
+                                hospitalService.addHospital(hospital1);
+                                hospitalService.addHospital(hospital2);
+                                hospitalService.addHospital(hospital3);
+                                break;
+                            case 2:
+                                hospitalService.getAllHospital();
+                                break;
+                            case 3:
+                                System.out.print("Введите Hospital ID: ");
+                                hospitalService.findHospitalById(scanner.nextLong());
+                                break;
+                            case 4:
+                                hospitalService.deleteHospitalById(scanner.nextLong());
+                                break;
+                            case 5:
+                                System.out.println("Введите Hospital Id: ");
+                                hospitalService.getAllPatientFromHospital(scanner.nextLong());
+                                break;
+                            case 6:
+                                System.out.println("Введите HospitalAddress: ");
+                                hospitalService.getAllHospitalByAddress(scanner.next());
                         }
-                        case 2 -> System.out.println(hospitalService.getAllHospital());
-                        case 3 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(hospitalService.findHospitalById(id));
-                        }
-                        case 4 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(hospitalService.deleteHospitalById(id));
-                        }
-                        case 5 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(hospitalService.getAllPatientFromHospital(id));;
-                        }
-                        case 6 -> {
-                            System.out.println("Enter hospital address: ");
-                            String address = new Scanner(System.in).nextLine();
-                            System.out.println(hospitalService.getAllHospitalByAddress(address));
-                        }
-                        default -> System.out.println("Такой команды нет!");
                     }
-                }
-                case 2 -> {
-                    patientCommands();
-                    int p = new Scanner(System.in).nextInt();
-                    switch (p) {
-                        case 1 -> {
-                            System.out.println("Enter Hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(patientService.addPatientToHospital(id, patient1));
+                case 2:
+                    while (true) {
+                        patientCommands();
+                        switch (scanner.nextInt()) {
+
+                            case 1:
+                                System.out.println("Введите HospitalId ");
+                                patientService.addPatientToHospital(scanner.nextLong(), patient1);
+                                break;
+                            case 2:
+                                System.out.println("Введите HospitalId : ");
+                                patientService.addPatientsToHospital(scanner.nextLong(), patients1);
+                                break;
+                            case 3:
+                                System.out.println("Введите PatientId: ");
+                                patientService.updatePatientById(scanner.nextLong(), patient2);
+                                break;
+                            case 4:
+                                System.out.println("Введите PatientId которого хотите удалить: ");
+                                patientService.removePatientById(scanner.nextLong());
+                                break;
+                            case 5:
+                                System.out.println("Введите PatientId: ");
+                                patientService.getPatientById(scanner.nextLong());
+                                break;
+                            case 6:
+                                System.out.println("Введите PatientAge: ");
+                                patientService.getPatientByAge(scanner.nextInt());
+                                break;
+                            case 7:
+                                System.out.println("Введите по кокой части хотте сортировать - asc , desk");
+                                patientService.sortPatientsByAge(scanner.next());
                         }
-                        case 2 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(patientService.addPatientsToHospital(id, patients1));
-                            System.out.println(patientService.addPatientsToHospital(id, patients2));
-                            System.out.println(patientService.addPatientsToHospital(id, patients3));
-                        }
-                        case 3 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(patientService.updatePatientById(id, patient1));
-                        }
-                        case 4 -> {
-                            System.out.println("Enter patient id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            patientService.removePatientById(id);
-                        }
-                        case 5 -> {
-                            System.out.println("Enter patient id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(patientService.getPatientById(id));
-                        }
-                        case 6 -> {
-                            System.out.println("Enter patient age: ");
-                            int age = new Scanner(System.in).nextInt();
-                            System.out.println(patientService.getPatientByAge(age));
-                        }
-                        case 7 -> {
-                            System.out.println("Enter patient sort (asc or desc): ");
-                            String ascOrDesc = new Scanner(System.in).nextLine();
-                            System.out.println(patientService.sortPatientsByAge(ascOrDesc));
-                        }
-                        default -> System.out.println("Такой команды нет!");
                     }
-                }
-                case 3 -> {
-                    departmentsCommands();
-                    int d = new Scanner(System.in).nextInt();
-                    switch (d) {
-                        case 1 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(departmentService.addDepartmentToHospital(id, department1));
+                case 3:
+                    while (true) {
+                        departmentsCommands();
+                        switch (scanner.nextInt()) {
+                            case 1:
+                                departmentService.addDepartmentToHospital(30L, department1);
+                                break;
+                            case 2:
+                                departmentService.getAllDepartmentByHospital(10L);
+                                break;
+                            case 3:
+                                departmentService.findDepartmentByName(department2.getDepartmentName());
+                                break;
+                            case 4:
+                                departmentService.deleteDepartmentById(2L);
+                                break;
+                            case 5:
+                                departmentService.updateDepartmentById(1L, department2);
+
                         }
-                        case 2 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            departmentService.getAllDepartmentByHospital(id).forEach(System.out::println);
-                        }
-                        case 3 -> {
-                            System.out.println("Enter department name: ");
-                            String name = new Scanner(System.in).nextLine();
-                            System.out.println(departmentService.findDepartmentByName(name));
-                        }
-                        case 4 -> {
-                            System.out.println("Enter department id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            departmentService.deleteDepartmentById(id);
-                        }
-                        case 5 -> {
-                            System.out.println("Enter department id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(departmentService.updateDepartmentById(id, department1));
-                        }
-                        default -> System.out.println("Такой команды нет!");
                     }
-                }
-                case 4 -> {
-                    doctorCommands();
-                    int doc = new Scanner(System.in).nextInt();
-                    switch (doc) {
-                        case 1 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(doctorService.addDoctorToHospital(id, doctor1));
-                            System.out.println(doctorService.addDoctorToHospital(id, doctor2));
-                            System.out.println(doctorService.addDoctorToHospital(id, doctor3));
-                            System.out.println(doctorService.addDoctorToHospital(id, doctor4));
-                            System.out.println(doctorService.addDoctorToHospital(id, doctor5));
+                case 4:
+                    List<Long> longs = List.of(doctor1.getId(), doctor2.getId(), doctor3.getId(), doctor4.getId(), doctor5.getId());
+                    while (true) {
+                        doctorCommands();
+                        switch (scanner.nextInt()) {
+                            case 1:
+                                doctorService.addDoctorToHospital(10L, doctor1);
+                                break;
+                            case 2:
+                                doctorService.findDoctorById(20L);
+                                break;
+                            case 3:
+                                doctorService.updateDoctor(10L, doctor5);
+                                break;
+                            case 4:
+                                doctorService.deleteDoctorById(1L);
+                                break;
+                            case 5:
+                                doctorService.assignDoctorToDepartment(department1.getId(), longs);
+                                break;
+                            case 6:
+                                doctorService.getAllDoctorsByHospitalId(10L);
+                                break;
+                            case 7:
+                                doctorService.getAllDoctorsByDepartmentId(1L);
+                                break;
                         }
-                        case 2 -> {
-                            System.out.println("Enter doctor id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(doctorService.findDoctorById(id));
-                        }
-                        case 3 -> {
-                            System.out.println("Enter doctor id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(doctorService.updateDoctor(id, doctor1));
-                        }
-                        case 4 -> {
-                            System.out.println("Enter doctor id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            doctorService.deleteDoctorById(id);
-                        }
-                        case 5 -> {
-                            System.out.println("Enter department id: ");
-                            Long departmentId = new Scanner(System.in).nextLong();
-                            System.out.println("Enter List<Long> doctorsId: ");
-                            List<Long> doctorsId = Collections.singletonList(new Scanner(System.in).nextLong());
-                            System.out.println(doctorService.assignDoctorToDepartment(departmentId, doctorsId));
-                        }
-                        case 6 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long id = new Scanner(System.in).nextLong();
-                            System.out.println(doctorService.getAllDoctorsByHospitalId(id));
-                        }
-                        case 7 -> {
-                            System.out.println("Enter hospital id: ");
-                            Long departmentId = new Scanner(System.in).nextLong();
-                            System.out.println(doctorService.getAllDoctorsByDepartmentId(departmentId));
-                        }
-                        default -> System.out.println("Такой команды нет!");
                     }
-                }
-                default -> System.out.println("Такой команды нет!");
             }
+
         }
 
-    }
-    public static void departmentsCommands(){
-        System.out.println("""
-            ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
-                |----------------------------------------|
-                | Press 1 to add department              | 
-                | Press 2 to get all department          |                              
-                | Press 3 to find by name department     |        
-                | Press 4 to delete department by id     |    
-                | Press 5 to update department by id     |   
-                |----------------------------------------|      
-            ``````````````````````````````````````````````````
-            """);
+
     }
 
-    public static void hospitalCommands(){
+    public static void departmentsCommands() {
         System.out.println("""
-             ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
-                |-------------------------------------------|
-                | Press 1 to add hospital                   | 
-                | Press 2 to get all hospital               | 
-                | Press 3 to find hospital by id            |
-                | Press 4 to delete hospital by id          |    
-                | Press 5 to get all patient from hospital  | 
-                | Press 6 to get all hospital by address    |
-                |-------------------------------------------|      
-            ``````````````````````````````````````````````````
-            """);
+                ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
+                    |----------------------------------------|
+                    | Press 1 to add department              |
+                    | Press 2 to get all department          |
+                    | Press 3 to find by name department     |
+                    | Press 4 to delete department by id     |
+                    | Press 5 to update department by id     |
+                    |----------------------------------------|
+                ``````````````````````````````````````````````````
+                """);
     }
 
-    public static void doctorCommands(){
+    public static void hospitalCommands() {
         System.out.println("""
-              ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
-                |---------------------------------------------|
-                | Press 1 to add doctor                       | 
-                | Press 2 to find doctor by id                | 
-                | Press 3 to update doctor                    |
-                | Press 4 to delete doctor by id              |    
-                | Press 5 to get assign doctor to department  | 
-                | Press 6 to get all doctor by hospital-id    |
-                | Press 7 to get all doctor by department     |
-                |---------------------------------------------|      
-            `````````````````````````````````````````````````````
-            """);
+                 ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
+                    |-------------------------------------------|
+                    | Press 1 to add hospital                   |
+                    | Press 2 to get all hospital               |
+                    | Press 3 to find hospital by id            |
+                    | Press 4 to delete hospital by id          |
+                    | Press 5 to get all patient from hospital  |
+                    | Press 6 to get all hospital by address    |
+                    |-------------------------------------------|
+                ``````````````````````````````````````````````````
+                """);
     }
 
-    public static void patientCommands(){
+    public static void doctorCommands() {
         System.out.println("""
-              ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
-                |-------------------------------------------|
-                | Press 1 to add patient                    | 
-                | Press 2 to add patients to hospital       | 
-                | Press 3 to update patient by id           |
-                | Press 4 to delete patient by id           |
-                | Press 5 to find patient by id             |
-                | Press 6 to find patient by age            |
-                | Press 7 to sort patient by age            |
-                |-------------------------------------------|      
-            ``````````````````````````````````````````````````""");
+                  ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
+                    |---------------------------------------------|
+                    | Press 1 to add doctor                       |
+                    | Press 2 to find doctor by id                |
+                    | Press 3 to update doctor                    |
+                    | Press 4 to delete doctor by id              |
+                    | Press 5 to get assign doctor to department  |
+                    | Press 6 to get all doctor by hospital-id    |
+                    | Press 7 to get all doctor by department     |
+                    |---------------------------------------------|
+                `````````````````````````````````````````````````````
+                """);
+    }
+
+    public static void patientCommands() {
+        System.out.println("""
+                  ~~~~~~~~~~~~~~~ C O M M A N D S ~~~~~~~~~~~~~~~~~~
+                    |-------------------------------------------|
+                    | Press 1 to add patient                    |
+                    | Press 2 to add patients to hospital       |
+                    | Press 3 to update patient by id           |
+                    | Press 4 to delete patient by id           |
+                    | Press 5 to find patient by id             |
+                    | Press 6 to find patient by age            |
+                    | Press 7 to sort patient by age            |
+                    |-------------------------------------------|
+                ``````````````````````````````````````````````````""");
+
     }
 }
